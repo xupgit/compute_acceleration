@@ -38,7 +38,7 @@ To save time on compilation, a precompiled project will be provided with the Chi
 * In the *Import Wizard*, expand *Xilinx* and select **SDX Project** and click **Next**
 * Select **SDx project exported zip file** and click **Next**
 * Browse to the appropriate *folder* for your target and click **OK** You should see a .sdx.zip file in the folder you select. 
-      sdxlabs/sources/debug/<aws|u200>
+      ~/compute_acceleration/sources/debug/<aws|u200>
 * Select the appropriate project archive for your target and click **Next**
 
 #### Set permissions on imported executable

@@ -43,7 +43,7 @@ After completing this lab, you will be able to:
 
 * In the _Project Explorer_ expand the *optimization_lab* folder if necessary, and right-click on the **src** folder and select **Import…**
 
-* Select **General &gt; File System**, click **Next**, browse to the source directory at **~/sdxlabs/sources/optimization\_lab** and click **OK**
+* Select **General &gt; File System**, click **Next**, browse to the source directory at **~/compute_acceleration/sources/optimization\_lab** and click **OK**
 
 * Select the **idct.cpp** and **krnl\_idct.cpp** files and click **Finish**
 
@@ -434,7 +434,7 @@ export PLATFORM_REPO_PATHS=/home/centos/src/project_data/aws-fpga/SDAccel/aws_pl
 - Expand *Xilinx* and select **SDx Project** and click **Next**
 - Choose *SDx project exported zip* file and click **Next**
 
-- Browse to **~/sdxlabs/solutions/optimization_lab/[aws|u200]/** and select the corresponding ***.sdx.zip** for your OS, and click **OK**
+- Browse to **~/compute_acceleration/solutions/optimization_lab/[aws|u200]/** and select the corresponding ***.sdx.zip** for your OS, and click **OK**
 
 You should see a new *optimiaztion_lab* folder in the Project Explorer
 

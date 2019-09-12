@@ -260,4 +260,4 @@ The PuTTY window will open. It will ask for the password (in case of the worksho
 
 - Enter centos as the username and enter the provided password and click **OK**
 
-  ![](G:/cathalmccabe/awslabs/images/connecting_lab/FigConnectingLab-12.png)
+  ![](./images/connecting_lab/FigConnectingLab-12.png)

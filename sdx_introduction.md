@@ -73,7 +73,7 @@ There are six main windows in this perspective: Project Explorer, Main panel (SD
 
     ![](./images/helloworld/import_srcs.png)
 
-* Browse to the ~/sdxlabs/sources/helloworld_ocl/src directory, and click **OK** to select this directory
+* Browse to the ~/compute_acceleration/sources/helloworld_ocl/src directory, and click **OK** to select this directory
 
     ![](./images/helloworld/import_from_dir.png)
 

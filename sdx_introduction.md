@@ -241,7 +241,7 @@ export PLATFORM_REPO_PATHS=/home/centos/src/project_data/aws-fpga/SDAccel/aws_pl
 * Again from the SDx file menu, select **import**
 * Expand *Xilinx* and select **SDx Project** and click **Next**
 * Choose *SDx project exported zip file* and click **Next**
-* Browse to **~/sdxlabs/solutions/hello_world/[aws|u200]/hello_world_sol.zip** and click **OK**
+* Browse to **~/compute_acceleration/solutions/hello_world/[aws|u200]/hello_world_sol.zip** and click **OK**
 
 You should see a new *hello_world_* folder in the Project Explorer
 

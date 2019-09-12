@@ -52,11 +52,9 @@ Once you have setup your computer/cloud instance, you can *git clone* this repos
 
 The tutorial assumes you will clone this repository to your Linux home area. If you choose to clone it somewhere else, you will need to adjust the path where specified in the tutorial instructions.
 
-**This repository does not exist yet. The material currently exists here: <https://github.com/cathalmccabe/awslabs/tree/sdaccel> **
-
 ```console
    cd ~
-   git clone https://github.com/xupgit/sdxlabs
+   git clone https://github.com/xupgit/compute_acceleration
 ```
 
 Proceed to the first lab [introducing SDx](sdx_introduction.md) 

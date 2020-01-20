@@ -108,40 +108,20 @@ If you select the wrong region you may not see your instance.
     <p align = "center">
     <i>Assigned IP to the running instance</i>
     </p>  
-### Interacting with the Instance using DVC
-
-There is a bug in CentOS 7 elated to RDP. DVC as recommended by Amazon will be used to remote desktop to the instance. 
-
-* Download and install the appropriate NICE DCV client here: https://download.nice-dcv.com
-
-Open PuTTY, enter the IPv4 Public IP address from the Amazon console, and click open
-
-![](./images/putty_ip4.png)
-
-This should open a terminal to the AWS instance. 
-
-* In the terminal, enter the following command to start the DCV server:
-
-```
-dcv create-session --type virtual --user centos centos
-```
-
-![](./images/putty_dcv.png)
-
-* Stop the firewall
-
-```
-sudo systemctl disable firewalld
-sudo systemctl stop firewalld
-```
 
 
 
-## NICE DCV
+### Connecting to AWS instance using NICE DCV
 
-Open the NICE DCV application, enter the I*Pv4 Public IP* from the Amazon console and click **Open**
+NICE DCV as recommended by Amazon will be used to remote desktop to the instance. 
 
+* Download and install the appropriate NICE DCV client if necessary from here: https://download.nice-dcv.com
 
+The NICE DCV session has already been started on the instance provided. See the Appendix for details on how to setup a session. 
+
+### Start NICE DCV
+
+* Open the NICE DCV application, enter the I*Pv4 Public IP* from the Amazon console and click **Open**
 
 ![](./images/nice_dcv.png)
 
@@ -192,7 +172,34 @@ Return to [Setup SDx](./setup_sdx.md) and go to the **Getting started with the t
 
 ---------------------------------------
 
-## Appendix: Interacting with the Instance using Putty
+## Appendix
+
+## Set up the NICE DCV session
+
+Open PuTTY, enter the IPv4 Public IP address from the Amazon console, and click open
+
+![](./images/putty_ip4.png)
+
+This should open a terminal to the AWS instance. 
+
+* In the terminal, enter the following command to start the DCV server:
+
+```
+dcv create-session --type virtual --user centos centos
+```
+
+![](./images/putty_dcv.png)
+
+* Stop the firewall
+
+```
+sudo systemctl disable firewalld
+sudo systemctl stop firewalld
+```
+
+
+
+## Interacting with the Instance using Putty
 
 * Start **PuTTY** or your preferred SSH client
 

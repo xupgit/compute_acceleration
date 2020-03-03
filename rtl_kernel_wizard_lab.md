@@ -109,7 +109,7 @@ Notice the AXI Master interfaces are 64 bytes (or 512 bits) wide as specified ea
 
 ![](./images/rtlkernel_lab/FigRTLKernelLab-12.png)
 
-* Zoom in into the top section and see the control logic the wizard has generated the ap_start, ap_idle, and ap_done control signals
+* Zoom in into the top section and see the control logic, the wizard has generated the ap_start, ap_idle, and ap_done control signals
 
 ![](./images/rtlkernel_lab/FigRTLKernelLab-13.png)
 
@@ -185,4 +185,4 @@ In this lab, you used the RTL Kernel wizard to create an example RTL adder appli
 
 ---------------------------------------
 
-Start the next lab: [6. Debug Lab](debug_lab.md)
+Start the next lab: [Debug Lab](debug_lab.md)

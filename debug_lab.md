@@ -32,8 +32,7 @@ After completing this lab, you will be able to:
 
 To save time on compilation, a precompiled project will be provided with the Chipscope debug cores already included in the design. 
 
-* Open SDx
-    Make sure your target platform has already been imported. You will see an error if the platform used by the precompiled project is not available.
+* Open SDx. Make sure your target platform has already been imported. You will see an error if the platform used by the precompiled project is not available.
 * From the SDx *File* menu, select **Import**
 * In the *Import Wizard*, expand *Xilinx* and select **SDX Project** and click **Next**
 * Select **SDx project exported zip file** and click **Next**
@@ -204,16 +203,16 @@ Observe that the program completes displaying **INFO: Test completed successfull
 * Click **Yes** when prompted to switch to the _Debug perspective_
 The bitstream will be downloaded to the FPGA and the host application will start executing, halting at **main()** entry point
 
-* In _host_example.cpp_ view scroll down to line ~262 and double-click on the left border to set a breakpoint  At this point, three buffers would have been created
+* In _host_example.cpp_ view scroll down to line ~262 and double-click on the left border to set a breakpoint. At this point, three buffers would have been created
 
   ![](./images/debug_lab/FigDebugLab-14.png)
   
 * Click on the **Resume** button or press **F8** 
 
 * When prompted click in the console and press *Enter* 
+
   The program will resume executing and stop when it reaches the breakpoint  
-  At this point you can click on the various monitoring tabs (*Variables, Command Queue, Memory Buffers* etc.) and see the contents currently in scope
-  SDx debug allows command queues and memory buffers to be examined as the program execution progresses
+  At this point you can click on the various monitoring tabs (*Variables, Command Queue, Memory Buffers* etc.) and see the contents currently in scope. SDx debug allows command queues and memory buffers to be examined as the program execution progresses
 
 * Click back to select *Debug.exe > #Thread 1* in the Debug panel
 
@@ -229,7 +228,7 @@ Notice that three buffers are allocated, their IDs, DDR memory address, and size
 
     ![](./images/debug_lab/FigDebugLab-15.png)
 
-* Select the **Command Queue** tab and notice that there no commands enqueued. 
+* Select the **Command Queue** tab and notice that there are no commands enqueued. 
 
 ![](./images/debug_lab/FigDebugLab-16.png)
 
@@ -239,20 +238,17 @@ Lines ~326-330 creates commands to read the data and results
    err |= clEnqueueReadBuffer( ... );
 ```
 
-* Press **F6** to execute the first `clEnqueueReadBuffer()` to create a read buffer command for reading operand _d\_A_ 
-Notice the Command Queue tab shows one command submitted
+* Press **F6** to execute the first `clEnqueueReadBuffer()` to create a read buffer command for reading operand _d\_A_. Notice the Command Queue tab shows one command submitted
 
     ![](./images/debug_lab/FigDebugLab-17.png)
 
-* Press **F6** to execute the next `clEnqueueReadBuffer()` for _d\_B_ 
-Notice the Command Queue tab shows two commands submitted
+* Press **F6** to execute the next `clEnqueueReadBuffer()` for _d\_B_. Notice the Command Queue tab shows two commands submitted
 
     ![](./images/debug_lab/FigDebugLab-18.png)
 
 * Set a breakpoint at line ~384 (`clReleaseKernel()`) and press **F8** to resume the execution  
 Notice that the Command Queue tab still shows entries
-* Press **F6** to execute `clReleaseKernel()`
-Notice the Memory Buffers tab is empty as all memories are released
+* Press **F6** to execute `clReleaseKernel()`. Notice the Memory Buffers tab is empty as all memories are released
 * Click **F8** to complete the execution
 * Close the SDx program
 

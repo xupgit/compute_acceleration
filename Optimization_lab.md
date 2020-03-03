@@ -330,7 +330,7 @@ The DATAFLOW optimization allows each of the subsequent functions to execute as 
 * In the **Assistant** tab, expand **optimization\_lab** &gt; **Emulation-HW** &gt; **binary\_container\_1**  &gt;   **krnl\_idct**
 * Double-click the **HLS Report** and review it
 
-()[./images/optimization_lab/FigOptimizationLab-19.png]
+![](./images/optimization_lab/FigOptimizationLab-19.png)
 
 * In the **Performance Estimates** section, expand the **Latency (clock cycles)** &gt; **Summary** and note the following numbers:
     - Latency (min/max): ~2000
@@ -339,7 +339,7 @@ The DATAFLOW optimization allows each of the subsequent functions to execute as 
 ###  Run the Hardware Emulation
 
 * Run the application by clicking the Run button (![alt tag](./images/Fig-run.png))  and wait for the run to finish with RUN COMPLETE message 
-  Notice the affect of the dataflow optimization in the VIvado simulation waveform view. Execution of reading, writing, pipelining and kernel is not concurrent.
+  Notice the effect of the dataflow optimization in the Vivado simulation waveform view. Execution of reading, writing, pipelining and kernel is not concurrent.
 
 ![](./images/optimization_lab/FigOptimizationLab-20-1.png)
 
@@ -462,7 +462,7 @@ Zip files do not preserve Unix file permissions, so the executable permissions m
 
 - Expand OpenCL if necessary, and select the **optimiaztion_lab-Default** configuration
 
-- Check the *binary container* has been included in the *Arguments* tab 
+- Check that the *binary container* has been included in the *Arguments* tab 
 
   For Alveo, this will be the binary_container_1.**xclbin** file, and for AWS this will be the binary_container_1.**awsxclbin** file. 
 
@@ -482,7 +482,7 @@ In this lab, you used SDx to create a project and add a kernel (hardware) functi
 ---------------------------------------
 
 
-Start the next lab: [5. RTL-Kernel Wizard Lab](rtl_kernel_wizard_lab.md)
+Start the next lab: [RTL-Kernel Wizard Lab](rtl_kernel_wizard_lab.md)
 
 ---------------------------------------
 

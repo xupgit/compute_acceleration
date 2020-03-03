@@ -14,7 +14,7 @@
 
 # Creating an Amazon FPGA Image (AFI)
 
-This document guides you through the steps to create an AWS Amazon FPGA Image (AFI) which can be run AWS EC2 F1 instance to verify the deign works in hardware. It assumes that a full system (SDx project) is built which consists of an *host* application (.exe) and an FPGA binary file (.xclbin). 
+This document guides you through the steps to create an AWS Amazon FPGA Image (AFI) which can be run AWS EC2 F1 instance to verify that the deign works in hardware. It assumes that a full system (SDx project) is built which consists of an *host* application (.exe) and an FPGA binary file (.xclbin). 
 
 ### Create an AFI
 

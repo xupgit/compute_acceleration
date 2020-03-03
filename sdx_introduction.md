@@ -28,7 +28,7 @@ You will compile and check a software only version of the application. The *vect
 
 After completing this lab, you will be able to:
 
-- Create an project using the SDx GUI
+- Create a project using the SDx GUI
 - Run Software Emulation to verify the functionality of a design
 - Run Hardware Emulation to verify the functionality of the generated hardware
 - Build the system and test it in hardware 

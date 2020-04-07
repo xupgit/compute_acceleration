@@ -53,10 +53,10 @@ ALL TIMES.
 #include <CL/cl2.hpp>
 
 //TARGET_DEVICE macro needs to be passed from gcc command line
-#if defined(SDX_PLATFORM) && !defined(TARGET_DEVICE)
+#if defined(VITIS_PLATFORM) && !defined(TARGET_DEVICE)
     #define STR_VALUE(arg)      #arg
     #define GET_STRING(name) STR_VALUE(name)
-    #define TARGET_DEVICE GET_STRING(SDX_PLATFORM)
+    #define TARGET_DEVICE GET_STRING(VITIS_PLATFORM)
 #endif
 
 static const std::string error_message =
@@ -65,7 +65,7 @@ static const std::string error_message =
 
 static const std::string results_message =
     "%d + %d = %d\n";
-    
+
 //Customized buffer allocation for 4K boundary alignment
 template <typename T>
 struct aligned_allocator
@@ -89,7 +89,7 @@ int get_xilinx_platform(cl::Device *device, std::vector<cl::Device> *devices){
 
     //TARGET_DEVICE macro needs to be passed from gcc command line
     const char *target_device_name = TARGET_DEVICE;
-    
+
     std::vector<cl::Platform> platforms;
     bool found_device = false;
 //traversing all Platforms To find Xilinx Platform and targeted
@@ -106,7 +106,7 @@ int get_xilinx_platform(cl::Device *device, std::vector<cl::Device> *devices){
             for (size_t j = 0 ; j < devices->size() ; j++){
                 *device = (*devices)[j];
                 std::string deviceName = device->getInfo<CL_DEVICE_NAME>();
-                if (deviceName == target_device_name){
+                if ((deviceName == target_device_name) || (deviceName.compare(0,deviceName.size(),target_device_name))){
                     found_device = true;
                     std::cout << "Found: " << deviceName << std::endl;
                     break;
@@ -119,11 +119,11 @@ int get_xilinx_platform(cl::Device *device, std::vector<cl::Device> *devices){
            << target_device_name << std::endl;
        return EXIT_FAILURE;
     }
-    return 0;
+    return CL_SUCCESS;
 }
 
 cl::Kernel load_xcl_bin(const char* kernel_name, char* xclbinFilename, cl::Context* context, std::vector<cl::Device> *devices){
-    // Load xclbin 
+    // Load xclbin
     std::cout << "Loading: '" << xclbinFilename << "'\n";
     std::ifstream bin_file(xclbinFilename, std::ifstream::binary);
     bin_file.seekg (0, bin_file.end);
@@ -131,15 +131,14 @@ cl::Kernel load_xcl_bin(const char* kernel_name, char* xclbinFilename, cl::Conte
     bin_file.seekg (0, bin_file.beg);
     char *buf = new char [nb];
     bin_file.read(buf, nb);
-    
+
     // Creating Program from Binary File
     cl::Program::Binaries bins;
     bins.push_back({buf,nb});
     devices->resize(1);
     cl::Program program(*context, *devices, bins);
-        // This call will get the kernel object from program. A kernel is an 
-    // OpenCL function that is executed on the FPGA. 
+        // This call will get the kernel object from program. A kernel is an
+    // OpenCL function that is executed on the FPGA.
     cl::Kernel krnl_vector_add(program, kernel_name);
     return krnl_vector_add;
 }
-

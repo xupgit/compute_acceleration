@@ -52,7 +52,7 @@ ALL TIMES.
 static const int DATA_SIZE = 4096;
 
 int main(int argc, char* argv[]) {
-    
+
     const char *kernel_name = "krnl_vadd"; // Open CL Kernel name
     int init_value; // Initialization value for vector arrays
     std::vector<cl::Device> devices; // OpenCL devices
@@ -81,40 +81,43 @@ int main(int argc, char* argv[]) {
 
     // Compute the size of array in bytes
     size_t size_in_bytes = DATA_SIZE * sizeof(int);
-    
-    // Creates a vector of DATA_SIZE elements 
+
+    // Creates a vector of DATA_SIZE elements
     // using customized allocator for getting buffer alignment to 4k boundary
     std::vector<int,aligned_allocator<int>> source_a(DATA_SIZE);
     std::vector<int,aligned_allocator<int>> source_b(DATA_SIZE);
     std::vector<int,aligned_allocator<int>> source_results(DATA_SIZE);
-    
+
     // Read in a user defined initial value for the arrays
 
     printf("Init arrays\n");
     // Initialize the arrays
     std::iota (std::begin(source_a), std::end(source_a), init_value);
     std::iota (std::begin(source_b), std::end(source_b), init_value);
-    
+
     // Check for the Xilinx device on the current platform
     std::cout << "Get Xilinx platform" << std::endl;
-    get_xilinx_platform(&device, &devices);
+    if (get_xilinx_platform(&device, &devices) != CL_SUCCESS){
+      std::cerr << "[ERROR] getting platform" << std::endl;
+      return EXIT_FAILURE;
+    }
 
     // Creating Context and Command Queue for selected device
     cl::Context context(device);
     cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE);
     cl::Kernel krnl_vector_add;
-    
+
     krnl_vector_add = load_xcl_bin(kernel_name, xclbinFilename, &context, &devices);
-    
+
     // Allocate memory on the Device. The cl::Buffer objects can
-    // be used to reference the memory locations on the device. 
-    cl::Buffer buffer_a(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,  
+    // be used to reference the memory locations on the device.
+    cl::Buffer buffer_a(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
             size_in_bytes, source_a.data());
-    cl::Buffer buffer_b(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,  
+    cl::Buffer buffer_b(context, CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
             size_in_bytes, source_b.data());
-    cl::Buffer buffer_result(context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY, 
+    cl::Buffer buffer_result(context, CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
             size_in_bytes, source_results.data());
-    
+
     // Data will be transferred from host memory over PCIe to the FPGA on-board
     // DDR memory.
     q.enqueueMigrateMemObjects({buffer_a,buffer_b},0/* 0 means from host*/);
@@ -147,7 +150,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    std::cout << "TEST " << (match ? "FAILED" : "PASSED") << std::endl; 
+    std::cout << "TEST " << (match ? "FAILED" : "PASSED") << std::endl;
     return (match ? EXIT_FAILURE :  EXIT_SUCCESS);
 
 }
